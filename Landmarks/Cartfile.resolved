@@ -1,0 +1,5 @@
+github "ReactiveX/RxSwift" "5.0.1"
+github "RxSwiftCommunity/RxDataSources" "3.1.0"
+github "SnapKit/SnapKit" "5.0.1"
+github "onevcat/Kingfisher" "5.13.2"
+github "uber/RIBs" "v0.9.2"

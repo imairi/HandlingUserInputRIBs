@@ -1,0 +1,10 @@
+{
+  "commitish" : "v0.9.2",
+  "iOS" : [
+    {
+      "name" : "RIBs",
+      "hash" : "959cdec99c09dee1de9e8d7e5f8ec9b2832cf082c6bdf6757be9fb3306e902f4",
+      "swiftToolchainVersion" : "5.1 (swiftlang-1100.0.270.13 clang-1100.0.33.7)"
+    }
+  ]
+}
