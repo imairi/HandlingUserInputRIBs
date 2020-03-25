@@ -216,14 +216,6 @@ SWIFT_CLASS("_TtC7RxSwift9AtomicInt")
 
 
 
-SWIFT_CLASS("_TtC7RxSwift13RecursiveLock")
-@interface RecursiveLock : NSRecursiveLock
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (void)lock;
-- (void)unlock;
-@end
-
-
 
 
 
@@ -443,14 +435,6 @@ SWIFT_CLASS("_TtC7RxSwift9AtomicInt")
 @end
 
 
-
-
-SWIFT_CLASS("_TtC7RxSwift13RecursiveLock")
-@interface RecursiveLock : NSRecursiveLock
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (void)lock;
-- (void)unlock;
-@end
 
 
 
@@ -678,14 +662,6 @@ SWIFT_CLASS("_TtC7RxSwift9AtomicInt")
 
 
 
-SWIFT_CLASS("_TtC7RxSwift13RecursiveLock")
-@interface RecursiveLock : NSRecursiveLock
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (void)lock;
-- (void)unlock;
-@end
-
-
 
 
 
@@ -905,14 +881,6 @@ SWIFT_CLASS("_TtC7RxSwift9AtomicInt")
 @end
 
 
-
-
-SWIFT_CLASS("_TtC7RxSwift13RecursiveLock")
-@interface RecursiveLock : NSRecursiveLock
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (void)lock;
-- (void)unlock;
-@end
 
 
 

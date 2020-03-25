@@ -57,6 +57,7 @@
 		B9319AB8240A5FD90007BBEC /* LandmarkListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9319AB4240A5FD90007BBEC /* LandmarkListInteractor.swift */; };
 		B9319ABA240A5FF10007BBEC /* RootComponent+LandmarkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9319AB9240A5FF10007BBEC /* RootComponent+LandmarkList.swift */; };
 		B9319B5F240A61460007BBEC /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9319B5E240A61460007BBEC /* AppComponent.swift */; };
+		B95D787D240BC48800057E30 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95D787C240BC48800057E30 /* Person.swift */; };
 		B995D82B240A7301003B944E /* LandmarkListSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = B995D82A240A7301003B944E /* LandmarkListSample.swift */; };
 /* End PBXBuildFile section */
 
@@ -128,6 +129,7 @@
 		B9319AB4240A5FD90007BBEC /* LandmarkListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkListInteractor.swift; sourceTree = "<group>"; };
 		B9319AB9240A5FF10007BBEC /* RootComponent+LandmarkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RootComponent+LandmarkList.swift"; sourceTree = "<group>"; };
 		B9319B5E240A61460007BBEC /* AppComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
+		B95D787C240BC48800057E30 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		B995D82A240A7301003B944E /* LandmarkListSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkListSample.swift; sourceTree = "<group>"; };
 		C4E4AAA0C4E4035000000001 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -284,6 +286,7 @@
 		B9319AB0240A5FBC0007BBEC /* LandmarkList */ = {
 			isa = PBXGroup;
 			children = (
+				B95D787B240BC45F00057E30 /* Model */,
 				B995D829240A72EC003B944E /* View */,
 				B9319AB1240A5FD90007BBEC /* LandmarkListRouter.swift */,
 				B9319AB2240A5FD90007BBEC /* LandmarkListViewController.swift */,
@@ -307,6 +310,14 @@
 			children = (
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B95D787B240BC45F00057E30 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B95D787C240BC48800057E30 /* Person.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B995D829240A72EC003B944E /* View */ = {
@@ -443,6 +454,7 @@
 				B9319AB6240A5FD90007BBEC /* LandmarkListViewController.swift in Sources */,
 				B7394882229F28B900C47603 /* Data.swift in Sources */,
 				B9319ABA240A5FF10007BBEC /* RootComponent+LandmarkList.swift in Sources */,
+				B95D787D240BC48800057E30 /* Person.swift in Sources */,
 				B9319AAE240A5F3E0007BBEC /* RootRouter.swift in Sources */,
 				B9319B5F240A61460007BBEC /* AppComponent.swift in Sources */,
 				B7394866229F194000C47603 /* AppDelegate.swift in Sources */,

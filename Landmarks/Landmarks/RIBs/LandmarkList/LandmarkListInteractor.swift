@@ -27,7 +27,10 @@ final class LandmarkListInteractor: PresentableInteractor<LandmarkListPresentabl
     weak var router: LandmarkListRouting?
     weak var listener: LandmarkListListener?
     
-    override init(presenter: LandmarkListPresentable) {
+    private let viewModel: PersonListViewModel
+    
+    init(presenter: LandmarkListPresentable, viewModel: PersonListViewModel) {
+        self.viewModel = viewModel
         super.init(presenter: presenter)
         presenter.listener = self
     }
@@ -37,6 +40,8 @@ final class LandmarkListInteractor: PresentableInteractor<LandmarkListPresentabl
         
         presenter.changeForegroundColor()
         presenter.updateText()
+        
+        viewModel.isShowDetail = true
     }
 
     override func willResignActive() {

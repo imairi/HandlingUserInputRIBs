@@ -213,14 +213,6 @@ SWIFT_CLASS("_TtC10RxBlocking9AtomicInt")
 @end
 
 
-SWIFT_CLASS("_TtC10RxBlocking13RecursiveLock")
-@interface RecursiveLock : NSRecursiveLock
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (void)lock;
-- (void)unlock;
-@end
-
-
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
@@ -434,14 +426,6 @@ SWIFT_CLASS("_TtC10RxBlocking9AtomicInt")
 @interface AtomicInt : NSLock
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS("_TtC10RxBlocking13RecursiveLock")
-@interface RecursiveLock : NSRecursiveLock
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (void)lock;
-- (void)unlock;
 @end
 
 
@@ -665,14 +649,6 @@ SWIFT_CLASS("_TtC10RxBlocking9AtomicInt")
 @end
 
 
-SWIFT_CLASS("_TtC10RxBlocking13RecursiveLock")
-@interface RecursiveLock : NSRecursiveLock
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (void)lock;
-- (void)unlock;
-@end
-
-
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
@@ -886,14 +862,6 @@ SWIFT_CLASS("_TtC10RxBlocking9AtomicInt")
 @interface AtomicInt : NSLock
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS("_TtC10RxBlocking13RecursiveLock")
-@interface RecursiveLock : NSRecursiveLock
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (void)lock;
-- (void)unlock;
 @end
 
 

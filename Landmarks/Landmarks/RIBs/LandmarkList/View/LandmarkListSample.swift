@@ -21,6 +21,12 @@ struct LandmarkListSample: View {
     private var backgroundColor = Color.red
     private var text: String = ""
     
+    @ObservedObject var viewModel: PersonListViewModel
+    
+    init(viewModel: PersonListViewModel) {
+        self.viewModel = viewModel
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -60,7 +66,7 @@ struct LandmarkListSample_Previews: PreviewProvider {
 //            .environmentObject(userData)
 //    }
     static var previews: some View {
-        var landmarkList = LandmarkListSample()
+        var landmarkList = LandmarkListSample(viewModel: PersonListViewModel())
         landmarkList.updateForegroundColor(color: .red)
         landmarkList.updateBackgroundColor(color: .blue)
         landmarkList.updateText(text: "aaaaa")

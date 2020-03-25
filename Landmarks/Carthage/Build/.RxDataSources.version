@@ -3,12 +3,12 @@
   "iOS" : [
     {
       "name" : "Differentiator",
-      "hash" : "ca69995dd9e3753856de046f0fe0d1380454526617530abe3136a444d1eba88b",
+      "hash" : "d8277afbb9d66646916abd43f483ee2eb4c680710e1d2e923e71e7c87ec50823",
       "swiftToolchainVersion" : "5.1 (swiftlang-1100.0.270.13 clang-1100.0.33.7)"
     },
     {
       "name" : "RxDataSources",
-      "hash" : "6dbb39967240d4ba98493da446ce56c77ef6aeedc2215a731834545395cb3948",
+      "hash" : "be9446b6c44e73f0f8c253d08ef7104b96fdfc01c12269a23b0d26c678224bd7",
       "swiftToolchainVersion" : "5.1 (swiftlang-1100.0.270.13 clang-1100.0.33.7)"
     }
   ]
