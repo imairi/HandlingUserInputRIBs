@@ -3,8 +3,8 @@
   "iOS" : [
     {
       "name" : "RIBs",
-      "hash" : "92536e6ea899e2c2b21f706c099368284065d116bea64a8c059beb7c885303e4",
-      "swiftToolchainVersion" : "5.1 (swiftlang-1100.0.270.13 clang-1100.0.33.7)"
+      "hash" : "d178e3dbd934ed700524f95d266560c5d8a5dbc22a70e982762009d2eab098d4",
+      "swiftToolchainVersion" : "5.2 (swiftlang-1103.0.32.1 clang-1103.0.32.29)"
     }
   ]
 }
