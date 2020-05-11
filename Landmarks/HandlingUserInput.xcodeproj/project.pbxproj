@@ -322,6 +322,7 @@
 		B9319B5D240A61310007BBEC /* AppStart */ = {
 			isa = PBXGroup;
 			children = (
+				B7394867229F194000C47603 /* SceneDelegate.swift */,
 				B9319B5E240A61460007BBEC /* AppComponent.swift */,
 				B7394865229F194000C47603 /* AppDelegate.swift */,
 			);
@@ -352,7 +353,6 @@
 			isa = PBXGroup;
 			children = (
 				B739487E229F282200C47603 /* Models */,
-				B7394867229F194000C47603 /* SceneDelegate.swift */,
 				B73948A0229F2E1F00C47603 /* LandmarkList.swift */,
 				B739489E229F2D9700C47603 /* LandmarkRow.swift */,
 				B7394869229F194000C47603 /* LandmarkDetail.swift */,

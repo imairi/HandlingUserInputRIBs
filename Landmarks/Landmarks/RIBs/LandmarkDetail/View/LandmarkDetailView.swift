@@ -12,11 +12,46 @@ struct LandmarkDetailView: View {
     @ObservedObject var presenter: LandmarkDetailPresenter
     
     var body: some View {
-        Text("landmark detail")
+        VStack {
+            MapView(coordinate: presenter.landmarkLocation)
+                .edgesIgnoringSafeArea(.top)
+                .frame(height: 300)
+            
+            CircleImage(image: presenter.landmarkImage)
+                .offset(x: 0, y: -130)
+                .padding(.bottom, -130)
+            
+            VStack(alignment: .leading) {
+                HStack {
+                    Text(presenter.landmarkName)
+                        .font(.title)
+                    
+                    Button(action: {
+                        print("tap")
+                    }) {
+                        
+                        Image(systemName: "star.fill")
+                            .foregroundColor(Color.yellow)
+                        
+                    }
+                }
+                
+                HStack(alignment: .top) {
+                    Text(presenter.landmarkParkName)
+                        .font(.subheadline)
+                    Spacer()
+                    Text(presenter.landmarkState)
+                        .font(.subheadline)
+                }
+            }
+            .padding()
+            
+            Spacer()
+        }
     }
 }
 
-struct LandmarkDetailView_Previews: PreviewProvider {
+struct LandmarkDetailView_Preview: PreviewProvider {
     static var previews: some View {
         let presenter = LandmarkDetailPresenter()
         return LandmarkDetailView(presenter: presenter)

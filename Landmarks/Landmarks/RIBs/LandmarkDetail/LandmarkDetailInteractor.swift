@@ -14,6 +14,8 @@ protocol LandmarkDetailRouting: ViewableRouting {
 
 protocol LandmarkDetailPresentable: Presentable {
     var listener: LandmarkDetailPresentableListener? { get set }
+    
+    func update(landmark: Landmark)
 }
 
 protocol LandmarkDetailListener: class {
@@ -35,6 +37,7 @@ final class LandmarkDetailInteractor: PresentableInteractor<LandmarkDetailPresen
 
     override func didBecomeActive() {
         super.didBecomeActive()
+        presenter.update(landmark: landmark)
     }
 
     override func willResignActive() {
