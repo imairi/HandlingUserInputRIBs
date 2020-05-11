@@ -8,14 +8,6 @@
 
 import SwiftUI
 
-struct NavigationBarButtonItem : View {
-    var body : some View {
-        Button(action: {
-            print("Button Tapped")
-        }, label: {Text("Done")})
-    }
-}
-
 struct LandmarkListView: View {
     private var backgroundColor = Color.red
     private var text: String = ""
@@ -37,7 +29,6 @@ struct LandmarkListView: View {
                 }
             }
             .background(presenter.color)
-            .navigationBarItems(trailing: NavigationBarButtonItem())
         }
     }
     

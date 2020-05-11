@@ -28,6 +28,9 @@ protocol RootViewControllable: ViewControllable {
 
 final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable>, RootRouting {
 
+    private let landmarkListBuilder: LandmarkListBuildable
+    private var landmarkList: ViewableRouting?
+    
     init(interactor: RootInteractable,
          viewController: RootViewControllable,
          landmarkListBuilder: LandmarkListBuildable) {
@@ -41,14 +44,11 @@ final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable>, Ro
 
         routeToLandmarkList()
     }
+}
 
-    // MARK: - Private
-
-    private let landmarkListBuilder: LandmarkListBuildable
-
-    private var landmarkList: ViewableRouting?
-
-    private func routeToLandmarkList() {
+// MARK: - LandmarkListRouting
+extension RootRouter {
+    func routeToLandmarkList() {
         let landmarkList = landmarkListBuilder.build(withListener: interactor)
         self.landmarkList = landmarkList
         attachChild(landmarkList)
