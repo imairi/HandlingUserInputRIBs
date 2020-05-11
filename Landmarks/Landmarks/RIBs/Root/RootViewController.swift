@@ -38,9 +38,10 @@ final class RootViewController: UIViewController, RootPresentable, RootViewContr
 
         view.backgroundColor = UIColor.red
     }
+}
 
-    // MARK: - RootViewControllable
-
+// MARK: - RootViewControllable
+extension RootViewController {
     func present(viewController: ViewControllable) {
         viewController.uiviewController.modalPresentationStyle = .fullScreen
         let navigationController = UINavigationController(rootViewController: viewController.uiviewController)
@@ -51,5 +52,3 @@ final class RootViewController: UIViewController, RootPresentable, RootViewContr
         viewController.uiviewController.dismiss(animated: true, completion: nil)
     }
 }
-
-
