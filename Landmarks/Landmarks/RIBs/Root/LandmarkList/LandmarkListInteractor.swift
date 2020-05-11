@@ -16,7 +16,7 @@ protocol LandmarkListPresentable: Presentable {
     var listener: LandmarkListPresentableListener? { get set }
     
     func changeForegroundColor()
-    func updateText()
+    func updateText(text: String)
 }
 
 protocol LandmarkListListener: class {
@@ -26,25 +26,26 @@ final class LandmarkListInteractor: PresentableInteractor<LandmarkListPresentabl
 
     weak var router: LandmarkListRouting?
     weak var listener: LandmarkListListener?
-    
-    private let viewModel: PersonListViewModel
-    
-    init(presenter: LandmarkListPresentable, viewModel: PersonListViewModel) {
-        self.viewModel = viewModel
+
+    override init(presenter: LandmarkListPresentable) {
         super.init(presenter: presenter)
         presenter.listener = self
     }
 
     override func didBecomeActive() {
         super.didBecomeActive()
-        
         presenter.changeForegroundColor()
-        presenter.updateText()
-        
-        viewModel.isShowDetail = true
+        presenter.updateText(text: "")
     }
 
     override func willResignActive() {
         super.willResignActive()
+    }
+}
+
+// MARK: - LandmarkListPresentableListener
+extension LandmarkListInteractor {
+    func changeText() {
+        presenter.updateText(text: "bbb")
     }
 }

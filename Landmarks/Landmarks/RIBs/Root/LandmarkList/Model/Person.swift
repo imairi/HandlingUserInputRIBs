@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct PersonModel: Identifiable {
     var id: Int
@@ -30,6 +31,9 @@ let personsMock: [PersonModel] = [
 
 final class PersonListViewModel: ObservableObject {
 
+    @Published private(set) var text: String = ""
+    @Published private(set) var color: Color = .clear
+    
     // リストに表示するデータ
     @Published private(set) var persons: [PersonModel] = []
     
@@ -57,3 +61,4 @@ final class PersonListViewModel: ObservableObject {
         self.isShowDetail = true
     }
 }
+

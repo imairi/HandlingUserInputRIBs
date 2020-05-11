@@ -28,11 +28,10 @@ final class LandmarkListBuilder: Builder<LandmarkListDependency>, LandmarkListBu
 
     func build(withListener listener: LandmarkListListener) -> LandmarkListRouting {
         let component = LandmarkListComponent(dependency: dependency)
-        let viewModel = PersonListViewModel()
-        let rootView = LandmarkListSample(viewModel: viewModel)
-        let viewController = LandmarkListViewController(rootView: rootView)
-        let interactor = LandmarkListInteractor(presenter: viewController,
-                                                viewModel: viewModel)
+        let presenter = LandmarkListPresenter()
+        let view = LandmarkListView(presenter: presenter)
+        let viewController = LandmarkListViewController(rootView: view)
+        let interactor = LandmarkListInteractor(presenter: presenter)
         interactor.listener = listener
         return LandmarkListRouter(interactor: interactor, viewController: viewController)
     }
