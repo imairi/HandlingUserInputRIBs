@@ -8,7 +8,7 @@
 
 import RIBs
 
-protocol LandmarkListDependency: Dependency {
+protocol LandmarkListDependency: LandmarkListDependencyLandmarkDetail {
 }
 
 final class LandmarkListComponent: Component<LandmarkListDependency> {
@@ -33,6 +33,9 @@ final class LandmarkListBuilder: Builder<LandmarkListDependency>, LandmarkListBu
         let viewController = LandmarkListViewController(rootView: view)
         let interactor = LandmarkListInteractor(presenter: presenter)
         interactor.listener = listener
-        return LandmarkListRouter(interactor: interactor, viewController: viewController)
+        let landmarkDetailBuilder = LandmarkDetailBuilder(dependency: component)
+        return LandmarkListRouter(interactor: interactor,
+                                  viewController: viewController,
+                                  landmarkDetailBuilder: landmarkDetailBuilder)
     }
 }
