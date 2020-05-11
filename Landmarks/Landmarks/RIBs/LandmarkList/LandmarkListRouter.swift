@@ -14,8 +14,8 @@ protocol LandmarkListInteractable: Interactable, LandmarkDetailListener {
 }
 
 protocol LandmarkListViewControllable: ViewControllable {
-    func present(viewController: ViewControllable)
-    func dismiss(viewController: ViewControllable)
+    func push(viewController: ViewControllable, from fromViewController: ViewControllable)
+    func pop(from fromViewController: ViewControllable)
 }
 
 final class LandmarkListRouter: ViewableRouter<LandmarkListInteractable, LandmarkListViewControllable>, LandmarkListRouting {
@@ -38,11 +38,6 @@ extension LandmarkListRouter {
         let landmarkDetail = landmarkDetailBuilder.build(withListener: interactor)
         attachChild(landmarkDetail)
         self.landmarkDetail = landmarkDetail
-        viewController.present(viewController: landmarkDetail.viewControllable)
-//        guard let navigationController = viewController.uiviewController.navigationController else {
-//            assertionFailure("UINavigationController does not exist")
-//            return
-//        }
-//        navigationController.pushViewController(landmarkDetail.viewControllable.uiviewController, animated: true)
+        viewController.push(viewController: landmarkDetail.viewControllable, from: viewController)
     }
 }

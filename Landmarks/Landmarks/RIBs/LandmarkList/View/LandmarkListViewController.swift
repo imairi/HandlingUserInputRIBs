@@ -43,13 +43,20 @@ final class LandmarkListViewController: UIHostingController<LandmarkListView>, L
 
 // MARK: - LandmarkListViewControllable
 extension LandmarkListViewController {
-    func present(viewController: ViewControllable) {
-        viewController.uiviewController.modalPresentationStyle = .fullScreen
-        present(viewController.uiviewController, animated: true, completion: nil)
+    func push(viewController: ViewControllable, from fromViewController: ViewControllable) {
+        guard let navigationController = fromViewController.uiviewController.navigationController else {
+            assertionFailure("UINavigationController does not exist")
+            return
+        }
+        navigationController.pushViewController(viewController.uiviewController, animated: true)
     }
 
-    func dismiss(viewController: ViewControllable) {
-        viewController.uiviewController.dismiss(animated: true, completion: nil)
+    func pop(from fromViewController: ViewControllable) {
+        guard let navigationController = fromViewController.uiviewController.navigationController else {
+            assertionFailure("UINavigationController does not exist")
+            return
+        }
+        navigationController.popViewController(animated: true)
     }
 }
 
