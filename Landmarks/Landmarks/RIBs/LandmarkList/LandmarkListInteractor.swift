@@ -29,9 +29,11 @@ final class LandmarkListInteractor: PresentableInteractor<LandmarkListPresentabl
     weak var router: LandmarkListRouting?
     weak var listener: LandmarkListListener?
     
-    private var landmarks: [Landmark] = []
+    private let mutableLandmarkStream: MutableLandmarkStream
 
-    override init(presenter: LandmarkListPresentable) {
+    init(presenter: LandmarkListPresentable,
+         mutableLandmarkStream: MutableLandmarkStream) {
+        self.mutableLandmarkStream = mutableLandmarkStream
         super.init(presenter: presenter)
         presenter.listener = self
     }
@@ -39,8 +41,13 @@ final class LandmarkListInteractor: PresentableInteractor<LandmarkListPresentabl
     override func didBecomeActive() {
         super.didBecomeActive()
         
-        landmarks = loadJSON("landmarkData.json")
-        presenter.updateLandmarks(landmarks: landmarks)
+        mutableLandmarkStream.landmarks
+            .subscribe(onNext: { [unowned self] landmarks in
+                self.presenter.updateLandmarks(landmarks: landmarks)
+            })
+            .disposeOnDeactivate(interactor: self)
+        
+        loadLandmarks()
     }
 
     override func willResignActive() {
@@ -50,6 +57,11 @@ final class LandmarkListInteractor: PresentableInteractor<LandmarkListPresentabl
 
 // MARK: - Internal
 extension LandmarkListInteractor {
+    func loadLandmarks() {
+        let landmarks: [Landmark] = loadJSON("landmarkData.json")
+        mutableLandmarkStream.update(landmarks: landmarks)
+    }
+    
     func loadJSON<T: Decodable>(_ filename: String) -> T {
         let data: Data
         
@@ -80,10 +92,10 @@ extension LandmarkListInteractor {
     
     func filterLandmarks(isFavoriteOnly: Bool) {
         if isFavoriteOnly {
-            let favoriteLandmarks = landmarks.filter { $0.isFavorite }
+            let favoriteLandmarks = mutableLandmarkStream.currentLandmarks.filter { $0.isFavorite }
             presenter.updateLandmarks(landmarks: favoriteLandmarks)
         } else {
-            presenter.updateLandmarks(landmarks: landmarks)
+            presenter.updateLandmarks(landmarks: mutableLandmarkStream.currentLandmarks)
         }
     }
     

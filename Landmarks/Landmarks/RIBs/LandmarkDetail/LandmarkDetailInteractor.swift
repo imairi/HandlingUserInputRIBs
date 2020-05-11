@@ -28,9 +28,13 @@ final class LandmarkDetailInteractor: PresentableInteractor<LandmarkDetailPresen
     weak var listener: LandmarkDetailListener?
     
     private var landmark: Landmark
+    private let mutableLandmarkStream: MutableLandmarkStream
     
-    init(presenter: LandmarkDetailPresentable, landmark: Landmark) {
+    init(presenter: LandmarkDetailPresentable,
+         landmark: Landmark,
+         mutableLandmarkStream: MutableLandmarkStream) {
         self.landmark = landmark
+        self.mutableLandmarkStream = mutableLandmarkStream
         super.init(presenter: presenter)
         presenter.listener = self
     }
@@ -54,5 +58,6 @@ extension LandmarkDetailInteractor {
     func toggleFavorite() {
         landmark.isFavorite.toggle()
         presenter.update(landmark: landmark)
+        mutableLandmarkStream.update(landmark: landmark)
     }
 }

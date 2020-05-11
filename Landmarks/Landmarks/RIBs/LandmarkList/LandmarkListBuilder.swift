@@ -12,6 +12,11 @@ protocol LandmarkListDependency: LandmarkListDependencyLandmarkDetail {
 }
 
 final class LandmarkListComponent: Component<LandmarkListDependency> {
+    var mutableLandmarkStream: MutableLandmarkStream {
+        return shared {
+            LandmarkStreamImpl()
+        }
+    }
 }
 
 // MARK: - Builder
@@ -33,7 +38,8 @@ final class LandmarkListBuilder: Builder<LandmarkListDependency>, LandmarkListBu
         let view = LandmarkListView(presenter: presenter)
         let viewController = LandmarkListViewController(rootView: view)
         
-        let interactor = LandmarkListInteractor(presenter: presenter)
+        let interactor = LandmarkListInteractor(presenter: presenter,
+                                                mutableLandmarkStream: component.mutableLandmarkStream)
         interactor.listener = listener
         
         let landmarkDetailBuilder = LandmarkDetailBuilder(dependency: component)

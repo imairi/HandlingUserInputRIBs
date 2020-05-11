@@ -9,9 +9,14 @@
 import RIBs
 
 protocol LandmarkDetailDependency: Dependency {
+    var mutableLandmarkStream: MutableLandmarkStream { get }
 }
 
 final class LandmarkDetailComponent: Component<LandmarkDetailDependency> {
+    var mutableLandmarkStream: MutableLandmarkStream {
+        return dependency.mutableLandmarkStream
+    }
+    
     fileprivate let landmark: Landmark
     
     init(dependency: LandmarkDetailDependency, landmark: Landmark) {
@@ -41,7 +46,8 @@ final class LandmarkDetailBuilder: Builder<LandmarkDetailDependency>, LandmarkDe
         let viewController = LandmarkDetailViewController(rootView: rootView)
         
         let interactor = LandmarkDetailInteractor(presenter: presenter,
-                                                  landmark: component.landmark)
+                                                  landmark: component.landmark,
+                                                  mutableLandmarkStream: component.mutableLandmarkStream)
         interactor.listener = listener
         
         return LandmarkDetailRouter(interactor: interactor, viewController: viewController)
