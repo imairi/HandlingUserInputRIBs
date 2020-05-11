@@ -8,10 +8,21 @@
 
 import SwiftUI
 
-struct LandmarkListView: View {
-    private var backgroundColor = Color.red
-    private var text: String = ""
+struct NavigationBarButtonItem : View {
+    @ObservedObject var presenter: LandmarkListPresenter
     
+    init(presenter: LandmarkListPresenter) {
+        self.presenter = presenter
+    }
+    
+    var body : some View {
+        Button(action: {
+            self.presenter.didTapDoneButton()
+        }, label: {Text("Done")})
+    }
+}
+
+struct LandmarkListView: View {
     @ObservedObject var presenter: LandmarkListPresenter
     
     init(presenter: LandmarkListPresenter) {
@@ -23,20 +34,19 @@ struct LandmarkListView: View {
             VStack {
                 Text(presenter.text)
                 Button(action: {
-                    self.didTapButton()
+                    self.presenter.didTapButton()
                 }) {
-                    Text("a")
+                    Text("aaaaaaaa")
                 }
             }
             .background(presenter.color)
+            .navigationBarTitle(Text("Landmarks"))
+            .navigationBarItems(trailing: NavigationBarButtonItem(presenter: presenter))
         }
-    }
-    
-    func didTapButton() {
-        presenter.didTapButton()
     }
 }
 
+// MARK: - Previews
 struct LandmarkListSample_Previews: PreviewProvider {
     static var previews: some View {
         let presenter = LandmarkListPresenter()

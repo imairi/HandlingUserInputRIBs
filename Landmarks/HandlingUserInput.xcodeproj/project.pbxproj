@@ -286,8 +286,6 @@
 			children = (
 				B995D829240A72EC003B944E /* View */,
 				B9319AB1240A5FD90007BBEC /* LandmarkListRouter.swift */,
-				B9319AB2240A5FD90007BBEC /* LandmarkListViewController.swift */,
-				B9EE10E42468C7DF008AC012 /* LandmarkListPresenter.swift */,
 				B9319AB3240A5FD90007BBEC /* LandmarkListBuilder.swift */,
 				B9319AB4240A5FD90007BBEC /* LandmarkListInteractor.swift */,
 			);
@@ -306,7 +304,9 @@
 		B995D829240A72EC003B944E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B9319AB2240A5FD90007BBEC /* LandmarkListViewController.swift */,
 				B995D82A240A7301003B944E /* LandmarkListView.swift */,
+				B9EE10E42468C7DF008AC012 /* LandmarkListPresenter.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

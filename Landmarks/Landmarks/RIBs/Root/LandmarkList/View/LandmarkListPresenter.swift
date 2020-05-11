@@ -11,6 +11,7 @@ import SwiftUI
 
 protocol LandmarkListPresentableListener: class {
     func changeText()
+    func close()
 }
 
 
@@ -22,6 +23,10 @@ final class LandmarkListPresenter: ObservableObject {
     
     func didTapButton() {
         listener?.changeText()
+    }
+    
+    func didTapDoneButton() {
+        listener?.close()
     }
 }
 

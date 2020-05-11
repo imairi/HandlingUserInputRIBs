@@ -20,6 +20,7 @@ protocol LandmarkListPresentable: Presentable {
 }
 
 protocol LandmarkListListener: class {
+    func closeLandmarkList()
 }
 
 final class LandmarkListInteractor: PresentableInteractor<LandmarkListPresentable>, LandmarkListInteractable, LandmarkListPresentableListener {
@@ -47,5 +48,9 @@ final class LandmarkListInteractor: PresentableInteractor<LandmarkListPresentabl
 extension LandmarkListInteractor {
     func changeText() {
         presenter.updateText(text: "bbb")
+    }
+    
+    func close() {
+        listener?.closeLandmarkList()
     }
 }

@@ -18,7 +18,7 @@ import RIBs
 import RxSwift
 
 protocol RootRouting: ViewableRouting {
-    
+    func finishLandmarkList()
 }
 
 protocol RootPresentable: Presentable {
@@ -45,5 +45,12 @@ final class RootInteractor: PresentableInteractor<RootPresentable>, RootInteract
 
     override func willResignActive() {
         super.willResignActive()
+    }
+}
+
+// MARK: - LandmarkListListener
+extension RootInteractor {
+    func closeLandmarkList() {
+        router?.finishLandmarkList()
     }
 }

@@ -54,4 +54,12 @@ extension RootRouter {
         attachChild(landmarkList)
         viewController.present(viewController: landmarkList.viewControllable)
     }
+    
+    func finishLandmarkList() {
+        guard let landmarkList = landmarkList else {
+            return
+        }
+        viewController.dismiss(viewController: landmarkList.viewControllable)
+        detachChild(landmarkList)
+    }
 }
