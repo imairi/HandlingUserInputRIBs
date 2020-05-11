@@ -31,28 +31,23 @@ struct LandmarkListView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                Text(presenter.text)
-                Button(action: {
-                    self.presenter.didTapButton()
-                }) {
-                    Text("aaaaaaaa")
+            List {
+                ForEach(presenter.landmarks) { landmark in
+                    LandmarkRow(landmark: landmark)
                 }
             }
-            .background(presenter.color)
             .navigationBarTitle(Text("Landmarks"))
             .navigationBarItems(trailing: NavigationBarButtonItem(presenter: presenter))
         }
     }
 }
 
-// MARK: - Previews
-struct LandmarkListSample_Previews: PreviewProvider {
+struct LandmarksListView_Previews: PreviewProvider {
     static var previews: some View {
-        let presenter = LandmarkListPresenter()
-        let landmarkList = LandmarkListView(presenter: presenter)
-        presenter.updateText(text: "ccc")
-        presenter.changeForegroundColor()
-        return landmarkList.previewLayout(.sizeThatFits)
+        ForEach(["iPhone SE", "iPhone XS Max"], id: \.self) { deviceName in
+            LandmarkList()
+                .previewDevice(PreviewDevice(rawValue: deviceName))
+                .previewDisplayName(deviceName)
+        }
     }
 }

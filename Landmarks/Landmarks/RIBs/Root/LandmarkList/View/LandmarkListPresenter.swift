@@ -10,20 +10,19 @@ import Foundation
 import SwiftUI
 
 protocol LandmarkListPresentableListener: class {
-    func changeText()
     func close()
 }
 
 
+//final class UserData: ObservableObject {
+//    @Published var showFavoritesOnly = false
+//    @Published var landmarks = landmarkData
+//}
+
 final class LandmarkListPresenter: ObservableObject {
     weak var listener: LandmarkListPresentableListener?
     
-    @Published private(set) var text: String = ""
-    @Published private(set) var color: Color = .clear
-    
-    func didTapButton() {
-        listener?.changeText()
-    }
+    @Published private(set) var landmarks: [Landmark] = []
     
     func didTapDoneButton() {
         listener?.close()
@@ -32,11 +31,7 @@ final class LandmarkListPresenter: ObservableObject {
 
 // MARK: - LandmarkListPresentable
 extension LandmarkListPresenter: LandmarkListPresentable {
-    func changeForegroundColor() {
-        color = .red
-    }
-    
-    func updateText(text: String) {
-        self.text = text
+    func updateLandmarks(landmarks: [Landmark]) {
+        self.landmarks = landmarks
     }
 }

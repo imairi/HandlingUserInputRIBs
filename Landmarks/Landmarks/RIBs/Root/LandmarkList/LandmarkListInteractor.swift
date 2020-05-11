@@ -15,8 +15,7 @@ protocol LandmarkListRouting: ViewableRouting {
 protocol LandmarkListPresentable: Presentable {
     var listener: LandmarkListPresentableListener? { get set }
     
-    func changeForegroundColor()
-    func updateText(text: String)
+    func updateLandmarks(landmarks: [Landmark])
 }
 
 protocol LandmarkListListener: class {
@@ -35,9 +34,8 @@ final class LandmarkListInteractor: PresentableInteractor<LandmarkListPresentabl
 
     override func didBecomeActive() {
         super.didBecomeActive()
-        let landmarkData: [Landmark] = loadJSON("landmarkData.json")
-        presenter.changeForegroundColor()
-        presenter.updateText(text: "")
+        let landmarks: [Landmark] = loadJSON("landmarkData.json")
+        presenter.updateLandmarks(landmarks: landmarks)
     }
 
     override func willResignActive() {
@@ -71,10 +69,6 @@ extension LandmarkListInteractor {
 
 // MARK: - LandmarkListPresentableListener
 extension LandmarkListInteractor {
-    func changeText() {
-        presenter.updateText(text: "bbb")
-    }
-    
     func close() {
         listener?.closeLandmarkList()
     }
