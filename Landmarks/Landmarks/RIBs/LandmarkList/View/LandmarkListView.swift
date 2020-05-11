@@ -8,16 +8,6 @@
 
 import SwiftUI
 
-struct NavigationBarButtonItem : View {
-    @ObservedObject var presenter: LandmarkListPresenter
-    
-    var body : some View {
-        Button(action: {
-            self.presenter.didTapDoneButton()
-        }, label: {Text("Close")})
-    }
-}
-
 struct LandmarkRowView: View {
     let landmark: Landmark
 
@@ -42,24 +32,20 @@ struct LandmarkListView: View {
     @ObservedObject var presenter: LandmarkListPresenter
     
     var body: some View {
-        NavigationView {
-            List {
-                Toggle(isOn: $presenter.isOn) {
-                    Text("Show Favorites Only")
-                }
-                ForEach(presenter.landmarks) { landmark in
-                    LandmarkRowView(landmark: landmark)
-                        .overlay(
-                            Button(action: {
-                                self.presenter.didTapLandmark(landmark)
-                            }, label: {
-                                Text("")
-                            })
-                        )
-                }
+        List {
+            Toggle(isOn: $presenter.isOn) {
+                Text("Show Favorites Only")
             }
-            .navigationBarTitle(Text("Landmarks"))
-            .navigationBarItems(trailing: NavigationBarButtonItem(presenter: presenter))
+            ForEach(presenter.landmarks) { landmark in
+                LandmarkRowView(landmark: landmark)
+                    .overlay(
+                        Button(action: {
+                            self.presenter.didTapLandmark(landmark)
+                        }, label: {
+                            Text("")
+                        })
+                )
+            }
         }
     }
 }

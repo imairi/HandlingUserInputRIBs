@@ -43,13 +43,12 @@ final class RootViewController: UIViewController, RootPresentable, RootViewContr
 
     func present(viewController: ViewControllable) {
         viewController.uiviewController.modalPresentationStyle = .fullScreen
-        present(viewController.uiviewController, animated: true, completion: nil)
+        let navigationController = UINavigationController(rootViewController: viewController.uiviewController)
+        present(navigationController, animated: true, completion: nil)
     }
 
     func dismiss(viewController: ViewControllable) {
-        if presentedViewController === viewController.uiviewController {
-            dismiss(animated: true, completion: nil)
-        }
+        viewController.uiviewController.dismiss(animated: true, completion: nil)
     }
 }
 
