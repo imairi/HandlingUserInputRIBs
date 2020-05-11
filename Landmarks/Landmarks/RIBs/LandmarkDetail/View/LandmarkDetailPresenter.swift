@@ -13,6 +13,7 @@ import CoreLocation
 
 protocol LandmarkDetailPresentableListener: class {
     func close()
+    func toggleFavorite()
 }
 
 final class LandmarkDetailPresenter: ObservableObject, LandmarkDetailPresentable {
@@ -23,10 +24,6 @@ final class LandmarkDetailPresenter: ObservableObject, LandmarkDetailPresentable
 
 // MARK: - Internal
 extension LandmarkDetailPresenter {
-    func didTapBackButton() {
-        listener?.close()
-    }
-    
     var landmarkParkName: String {
         landmark?.park ?? ""
     }
@@ -45,6 +42,18 @@ extension LandmarkDetailPresenter {
     
     var landmarkLocation: CLLocationCoordinate2D {
         landmark?.locationCoordinate ?? .init(latitude: 35.0, longitude: 135.0)
+    }
+    
+    var isFavorite: Bool {
+        landmark?.isFavorite ?? false
+    }
+    
+    func didTapBackButton() {
+        listener?.close()
+    }
+    
+    func didTapFavoriteButton() {
+        listener?.toggleFavorite()
     }
 }
 

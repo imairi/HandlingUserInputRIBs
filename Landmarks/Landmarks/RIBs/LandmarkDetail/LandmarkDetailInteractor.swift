@@ -27,7 +27,7 @@ final class LandmarkDetailInteractor: PresentableInteractor<LandmarkDetailPresen
     weak var router: LandmarkDetailRouting?
     weak var listener: LandmarkDetailListener?
     
-    private let landmark: Landmark
+    private var landmark: Landmark
     
     init(presenter: LandmarkDetailPresentable, landmark: Landmark) {
         self.landmark = landmark
@@ -49,5 +49,10 @@ final class LandmarkDetailInteractor: PresentableInteractor<LandmarkDetailPresen
 extension LandmarkDetailInteractor {
     func close() {
         listener?.closeLandmarkDetail()
+    }
+    
+    func toggleFavorite() {
+        landmark.isFavorite.toggle()
+        presenter.update(landmark: landmark)
     }
 }

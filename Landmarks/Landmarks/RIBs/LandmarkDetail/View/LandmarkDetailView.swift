@@ -27,12 +27,15 @@ struct LandmarkDetailView: View {
                         .font(.title)
                     
                     Button(action: {
-                        print("tap")
+                        self.presenter.didTapFavoriteButton()
                     }) {
-                        
-                        Image(systemName: "star.fill")
-                            .foregroundColor(Color.yellow)
-                        
+                        if presenter.isFavorite {
+                            Image(systemName: "star.fill")
+                                .foregroundColor(Color.yellow)
+                        } else {
+                            Image(systemName: "star")
+                                .foregroundColor(Color.gray)
+                        }
                     }
                 }
                 
