@@ -13,6 +13,7 @@ import Combine
 protocol LandmarkListPresentableListener: class {
     func close()
     func filterLandmarks(isFavoriteOnly: Bool)
+    func showLandmark(_ landmark: Landmark)
 }
 
 final class LandmarkListPresenter: ObservableObject {
@@ -43,6 +44,10 @@ final class LandmarkListPresenter: ObservableObject {
 extension LandmarkListPresenter {
     func didTapDoneButton() {
         listener?.close()
+    }
+    
+    func didTapLandmark(_ landmark: Landmark) {
+        listener?.showLandmark(landmark)
     }
 }
 

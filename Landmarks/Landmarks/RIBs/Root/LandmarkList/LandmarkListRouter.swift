@@ -17,9 +17,15 @@ protocol LandmarkListViewControllable: ViewControllable {
 }
 
 final class LandmarkListRouter: ViewableRouter<LandmarkListInteractable, LandmarkListViewControllable>, LandmarkListRouting {
-
     override init(interactor: LandmarkListInteractable, viewController: LandmarkListViewControllable) {
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
+    }
+}
+
+// MARK: - LandmarkListRouting
+extension LandmarkListRouter {
+    func routeToLandmarkDetail(landmark: Landmark) {
+        
     }
 }

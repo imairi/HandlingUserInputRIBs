@@ -10,6 +10,7 @@ import RIBs
 import RxSwift
 
 protocol LandmarkListRouting: ViewableRouting {
+    func routeToLandmarkDetail(landmark: Landmark)
 }
 
 protocol LandmarkListPresentable: Presentable {
@@ -83,5 +84,9 @@ extension LandmarkListInteractor {
         } else {
             presenter.updateLandmarks(landmarks: landmarks)
         }
+    }
+    
+    func showLandmark(_ landmark: Landmark) {
+        router?.routeToLandmarkDetail(landmark: landmark)
     }
 }

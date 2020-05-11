@@ -49,6 +49,13 @@ struct LandmarkListView: View {
                 }
                 ForEach(presenter.landmarks) { landmark in
                     LandmarkRowView(landmark: landmark)
+                        .overlay(
+                            Button(action: {
+                                self.presenter.didTapLandmark(landmark)
+                            }, label: {
+                                Text("")
+                            })
+                        )
                 }
             }
             .navigationBarTitle(Text("Landmarks"))
