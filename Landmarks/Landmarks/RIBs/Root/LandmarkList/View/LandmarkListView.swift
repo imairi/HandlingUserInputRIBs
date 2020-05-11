@@ -11,10 +11,6 @@ import SwiftUI
 struct NavigationBarButtonItem : View {
     @ObservedObject var presenter: LandmarkListPresenter
     
-    init(presenter: LandmarkListPresenter) {
-        self.presenter = presenter
-    }
-    
     var body : some View {
         Button(action: {
             self.presenter.didTapDoneButton()
@@ -22,12 +18,28 @@ struct NavigationBarButtonItem : View {
     }
 }
 
+struct LandmarkRowView: View {
+    let landmark: Landmark
+
+    var body: some View {
+        HStack {
+            landmark.image
+                .resizable()
+                .frame(width: 50, height: 50)
+            Text(landmark.name)
+            Spacer()
+
+            if landmark.isFavorite {
+                Image(systemName: "star.fill")
+                    .imageScale(.medium)
+                    .foregroundColor(.yellow)
+            }
+        }
+    }
+}
+
 struct LandmarkListView: View {
     @ObservedObject var presenter: LandmarkListPresenter
-    
-    init(presenter: LandmarkListPresenter) {
-        self.presenter = presenter
-    }
     
     var body: some View {
         NavigationView {
@@ -36,7 +48,7 @@ struct LandmarkListView: View {
                     Text("Show Favorites Only")
                 }
                 ForEach(presenter.landmarks) { landmark in
-                    LandmarkRow(landmark: landmark)
+                    LandmarkRowView(landmark: landmark)
                 }
             }
             .navigationBarTitle(Text("Landmarks"))
