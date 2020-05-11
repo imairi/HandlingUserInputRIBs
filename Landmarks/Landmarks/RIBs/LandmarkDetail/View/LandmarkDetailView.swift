@@ -57,6 +57,15 @@ struct LandmarkDetailView: View {
 struct LandmarkDetailView_Preview: PreviewProvider {
     static var previews: some View {
         let presenter = LandmarkDetailPresenter()
+        let landmark = Landmark(id: 0,
+                                name: "公園",
+                                imageName: "",
+                                coordinates: .init(latitude: 35.0, longitude: 135.0),
+                                state: "",
+                                park: "",
+                                category: .mountains,
+                                isFavorite: true)
+        presenter.update(landmark: landmark)
         return LandmarkDetailView(presenter: presenter)
     }
 }

@@ -11,7 +11,7 @@ import CoreLocation
 struct Landmark: Hashable, Codable, Identifiable {
     var id: Int
     var name: String
-    var imageName: String
+    fileprivate var imageName: String
     fileprivate var coordinates: Coordinates
     var state: String
     var park: String
@@ -29,6 +29,17 @@ struct Landmark: Hashable, Codable, Identifiable {
         case lakes = "Lakes"
         case rivers = "Rivers"
         case mountains = "Mountains"
+    }
+    
+    init(id: Int, name: String, imageName: String, coordinates: Coordinates, state: String, park: String, category: Category, isFavorite: Bool) {
+        self.id = id
+        self.name = name
+        self.imageName = imageName
+        self.coordinates = coordinates
+        self.state = state
+        self.park = park
+        self.category = category
+        self.isFavorite = isFavorite
     }
 }
 
