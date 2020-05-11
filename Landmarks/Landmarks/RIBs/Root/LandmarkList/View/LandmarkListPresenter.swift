@@ -8,22 +8,39 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 protocol LandmarkListPresentableListener: class {
     func close()
+    func filterLandmarks(isFavoriteOnly: Bool)
 }
-
-
-//final class UserData: ObservableObject {
-//    @Published var showFavoritesOnly = false
-//    @Published var landmarks = landmarkData
-//}
 
 final class LandmarkListPresenter: ObservableObject {
     weak var listener: LandmarkListPresentableListener?
     
     @Published private(set) var landmarks: [Landmark] = []
+    @Published var isOn: Bool = false
     
+    private var cancellables: [AnyCancellable] = []
+    
+    init() {
+        setUpBindings()
+    }
+    
+    deinit {
+        cancellables.forEach { $0.cancel() }
+    }
+    
+    private func setUpBindings() {
+        let toggleCancellable = $isOn.sink { [unowned self] isOn in
+            self.listener?.filterLandmarks(isFavoriteOnly: isOn)
+        }
+        cancellables.append(toggleCancellable)
+    }
+}
+
+// MARK: - Internal
+extension LandmarkListPresenter {
     func didTapDoneButton() {
         listener?.close()
     }

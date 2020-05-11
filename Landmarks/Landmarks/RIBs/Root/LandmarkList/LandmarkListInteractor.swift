@@ -26,6 +26,8 @@ final class LandmarkListInteractor: PresentableInteractor<LandmarkListPresentabl
 
     weak var router: LandmarkListRouting?
     weak var listener: LandmarkListListener?
+    
+    private var landmarks: [Landmark] = []
 
     override init(presenter: LandmarkListPresentable) {
         super.init(presenter: presenter)
@@ -34,7 +36,8 @@ final class LandmarkListInteractor: PresentableInteractor<LandmarkListPresentabl
 
     override func didBecomeActive() {
         super.didBecomeActive()
-        let landmarks: [Landmark] = loadJSON("landmarkData.json")
+        
+        landmarks = loadJSON("landmarkData.json")
         presenter.updateLandmarks(landmarks: landmarks)
     }
 
@@ -71,5 +74,14 @@ extension LandmarkListInteractor {
 extension LandmarkListInteractor {
     func close() {
         listener?.closeLandmarkList()
+    }
+    
+    func filterLandmarks(isFavoriteOnly: Bool) {
+        if isFavoriteOnly {
+            let favoriteLandmarks = landmarks.filter { $0.isFavorite }
+            presenter.updateLandmarks(landmarks: favoriteLandmarks)
+        } else {
+            presenter.updateLandmarks(landmarks: landmarks)
+        }
     }
 }

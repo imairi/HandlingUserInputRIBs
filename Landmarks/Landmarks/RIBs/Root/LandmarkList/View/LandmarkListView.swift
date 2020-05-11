@@ -18,7 +18,7 @@ struct NavigationBarButtonItem : View {
     var body : some View {
         Button(action: {
             self.presenter.didTapDoneButton()
-        }, label: {Text("Done")})
+        }, label: {Text("Close")})
     }
 }
 
@@ -32,6 +32,9 @@ struct LandmarkListView: View {
     var body: some View {
         NavigationView {
             List {
+                Toggle(isOn: $presenter.isOn) {
+                    Text("Show Favorites Only")
+                }
                 ForEach(presenter.landmarks) { landmark in
                     LandmarkRow(landmark: landmark)
                 }
