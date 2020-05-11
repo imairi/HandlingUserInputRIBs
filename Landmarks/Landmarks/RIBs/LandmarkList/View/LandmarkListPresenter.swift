@@ -1,5 +1,5 @@
 //
-//  Person.swift
+//  LandmarkListPresenter.swift
 //  Landmarks
 //
 //  Created by 今入　庸介 on 2020/03/01.
@@ -16,7 +16,7 @@ protocol LandmarkListPresentableListener: class {
     func showLandmark(_ landmark: Landmark)
 }
 
-final class LandmarkListPresenter: ObservableObject {
+final class LandmarkListPresenter: ObservableObject, LandmarkListPresentable {
     weak var listener: LandmarkListPresentableListener?
     
     @Published private(set) var landmarks: [Landmark] = []
@@ -42,7 +42,7 @@ final class LandmarkListPresenter: ObservableObject {
 
 // MARK: - Internal
 extension LandmarkListPresenter {
-    func didTapDoneButton() {
+    func didTapCloseButton() {
         listener?.close()
     }
     
@@ -52,7 +52,7 @@ extension LandmarkListPresenter {
 }
 
 // MARK: - LandmarkListPresentable
-extension LandmarkListPresenter: LandmarkListPresentable {
+extension LandmarkListPresenter {
     func updateLandmarks(landmarks: [Landmark]) {
         self.landmarks = landmarks
     }

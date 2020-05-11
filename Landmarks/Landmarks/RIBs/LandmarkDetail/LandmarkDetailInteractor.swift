@@ -17,6 +17,7 @@ protocol LandmarkDetailPresentable: Presentable {
 }
 
 protocol LandmarkDetailListener: class {
+    func closeLandmarkDetail()
 }
 
 final class LandmarkDetailInteractor: PresentableInteractor<LandmarkDetailPresentable>, LandmarkDetailInteractable, LandmarkDetailPresentableListener {
@@ -24,7 +25,10 @@ final class LandmarkDetailInteractor: PresentableInteractor<LandmarkDetailPresen
     weak var router: LandmarkDetailRouting?
     weak var listener: LandmarkDetailListener?
     
-    override init(presenter: LandmarkDetailPresentable) {
+    private let landmark: Landmark
+    
+    init(presenter: LandmarkDetailPresentable, landmark: Landmark) {
+        self.landmark = landmark
         super.init(presenter: presenter)
         presenter.listener = self
     }
@@ -35,5 +39,12 @@ final class LandmarkDetailInteractor: PresentableInteractor<LandmarkDetailPresen
 
     override func willResignActive() {
         super.willResignActive()
+    }
+}
+
+// MARK: - LandmarkDetailPresentableListener
+extension LandmarkDetailInteractor {
+    func close() {
+        listener?.closeLandmarkDetail()
     }
 }

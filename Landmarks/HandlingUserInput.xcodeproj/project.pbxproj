@@ -63,6 +63,8 @@
 		B9319ABA240A5FF10007BBEC /* RootComponent+LandmarkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9319AB9240A5FF10007BBEC /* RootComponent+LandmarkList.swift */; };
 		B9319B5F240A61460007BBEC /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9319B5E240A61460007BBEC /* AppComponent.swift */; };
 		B95D787D240BC48800057E30 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95D787C240BC48800057E30 /* Person.swift */; };
+		B9622EA124693E8C005DE764 /* LandmarkDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9622EA024693E8C005DE764 /* LandmarkDetailView.swift */; };
+		B9622EA324693EF6005DE764 /* LandmarkDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9622EA224693EF6005DE764 /* LandmarkDetailPresenter.swift */; };
 		B995D82B240A7301003B944E /* LandmarkListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B995D82A240A7301003B944E /* LandmarkListView.swift */; };
 		B9EE10E52468C7DF008AC012 /* LandmarkListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EE10E42468C7DF008AC012 /* LandmarkListPresenter.swift */; };
 /* End PBXBuildFile section */
@@ -141,6 +143,8 @@
 		B9319AB9240A5FF10007BBEC /* RootComponent+LandmarkList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RootComponent+LandmarkList.swift"; sourceTree = "<group>"; };
 		B9319B5E240A61460007BBEC /* AppComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
 		B95D787C240BC48800057E30 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		B9622EA024693E8C005DE764 /* LandmarkDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetailView.swift; sourceTree = "<group>"; };
+		B9622EA224693EF6005DE764 /* LandmarkDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetailPresenter.swift; sourceTree = "<group>"; };
 		B995D82A240A7301003B944E /* LandmarkListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkListView.swift; sourceTree = "<group>"; };
 		B9EE10E42468C7DF008AC012 /* LandmarkListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandmarkListPresenter.swift; sourceTree = "<group>"; };
 		C4E4AAA0C4E4035000000001 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -258,8 +262,8 @@
 		B926AB3A24692A0D00312048 /* LandmarkDetail */ = {
 			isa = PBXGroup;
 			children = (
+				B9622E9F24693E78005DE764 /* View */,
 				B926AB3B24692A4000312048 /* LandmarkDetailRouter.swift */,
-				B926AB3C24692A4000312048 /* LandmarkDetailViewController.swift */,
 				B926AB3D24692A4000312048 /* LandmarkDetailBuilder.swift */,
 				B926AB3E24692A4000312048 /* LandmarkDetailInteractor.swift */,
 			);
@@ -322,6 +326,16 @@
 				B7394865229F194000C47603 /* AppDelegate.swift */,
 			);
 			path = AppStart;
+			sourceTree = "<group>";
+		};
+		B9622E9F24693E78005DE764 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B926AB3C24692A4000312048 /* LandmarkDetailViewController.swift */,
+				B9622EA024693E8C005DE764 /* LandmarkDetailView.swift */,
+				B9622EA224693EF6005DE764 /* LandmarkDetailPresenter.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B995D829240A72EC003B944E /* View */ = {
@@ -476,8 +490,10 @@
 				B9319ABA240A5FF10007BBEC /* RootComponent+LandmarkList.swift in Sources */,
 				B95D787D240BC48800057E30 /* Person.swift in Sources */,
 				B9319AAE240A5F3E0007BBEC /* RootRouter.swift in Sources */,
+				B9622EA124693E8C005DE764 /* LandmarkDetailView.swift in Sources */,
 				B9319B5F240A61460007BBEC /* AppComponent.swift in Sources */,
 				B7394866229F194000C47603 /* AppDelegate.swift in Sources */,
+				B9622EA324693EF6005DE764 /* LandmarkDetailPresenter.swift in Sources */,
 				B926AB4424692A8800312048 /* LandmarkListComponent+LandmarkDetail.swift in Sources */,
 				B9319AAD240A5F3E0007BBEC /* RootInteractor.swift in Sources */,
 				B739487A229F1B3F00C47603 /* CircleImage.swift in Sources */,

@@ -35,9 +35,18 @@ final class LandmarkListRouter: ViewableRouter<LandmarkListInteractable, Landmar
 // MARK: - LandmarkListRouting
 extension LandmarkListRouter {
     func routeToLandmarkDetail(landmark: Landmark) {
-        let landmarkDetail = landmarkDetailBuilder.build(withListener: interactor)
+        let landmarkDetail = landmarkDetailBuilder.build(withListener: interactor, landmark: landmark)
         attachChild(landmarkDetail)
         self.landmarkDetail = landmarkDetail
         viewController.push(viewController: landmarkDetail.viewControllable, from: viewController)
+    }
+    
+    func finishLandmarkDetail() {
+        guard let landmarkDetail = landmarkDetail else {
+            return
+        }
+        viewController.pop(from: viewController)
+        detachChild(landmarkDetail)
+        self.landmarkDetail = nil
     }
 }

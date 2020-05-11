@@ -61,5 +61,6 @@ extension RootRouter {
         }
         viewController.dismiss(viewController: landmarkList.viewControllable)
         detachChild(landmarkList)
+        self.landmarkList = nil
     }
 }

@@ -12,12 +12,18 @@ protocol LandmarkDetailDependency: Dependency {
 }
 
 final class LandmarkDetailComponent: Component<LandmarkDetailDependency> {
+    fileprivate let landmark: Landmark
+    
+    init(dependency: LandmarkDetailDependency, landmark: Landmark) {
+        self.landmark = landmark
+        super.init(dependency: dependency)
+    }
 }
 
 // MARK: - Builder
 
 protocol LandmarkDetailBuildable: Buildable {
-    func build(withListener listener: LandmarkDetailListener) -> LandmarkDetailRouting
+    func build(withListener listener: LandmarkDetailListener, landmark: Landmark) -> LandmarkDetailRouting
 }
 
 final class LandmarkDetailBuilder: Builder<LandmarkDetailDependency>, LandmarkDetailBuildable {
@@ -26,11 +32,18 @@ final class LandmarkDetailBuilder: Builder<LandmarkDetailDependency>, LandmarkDe
         super.init(dependency: dependency)
     }
 
-    func build(withListener listener: LandmarkDetailListener) -> LandmarkDetailRouting {
-        let component = LandmarkDetailComponent(dependency: dependency)
-        let viewController = LandmarkDetailViewController()
-        let interactor = LandmarkDetailInteractor(presenter: viewController)
+    func build(withListener listener: LandmarkDetailListener, landmark: Landmark) -> LandmarkDetailRouting {
+        let component = LandmarkDetailComponent(dependency: dependency,
+                                                landmark: landmark)
+        
+        let presenter = LandmarkDetailPresenter()
+        let rootView = LandmarkDetailView(presenter: presenter)
+        let viewController = LandmarkDetailViewController(rootView: rootView)
+        
+        let interactor = LandmarkDetailInteractor(presenter: presenter,
+                                                  landmark: component.landmark)
         interactor.listener = listener
+        
         return LandmarkDetailRouter(interactor: interactor, viewController: viewController)
     }
 }

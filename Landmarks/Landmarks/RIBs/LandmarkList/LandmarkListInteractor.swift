@@ -11,6 +11,7 @@ import RxSwift
 
 protocol LandmarkListRouting: ViewableRouting {
     func routeToLandmarkDetail(landmark: Landmark)
+    func finishLandmarkDetail()
 }
 
 protocol LandmarkListPresentable: Presentable {
@@ -88,5 +89,12 @@ extension LandmarkListInteractor {
     
     func showLandmark(_ landmark: Landmark) {
         router?.routeToLandmarkDetail(landmark: landmark)
+    }
+}
+
+// MARK: - LandmarkDetailListener
+extension LandmarkListInteractor {
+    func closeLandmarkDetail() {
+        router?.finishLandmarkDetail()
     }
 }

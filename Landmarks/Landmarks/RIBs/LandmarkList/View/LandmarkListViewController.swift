@@ -35,7 +35,7 @@ final class LandmarkListViewController: UIHostingController<LandmarkListView>, L
         closeBarButtonItem.rx.tap.asObservable()
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [unowned self] _ in
-                self.rootView.presenter.didTapDoneButton()
+                self.rootView.presenter.didTapCloseButton()
             })
             .disposed(by: disposeBag)
     }
